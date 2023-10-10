@@ -181,7 +181,8 @@ Buatlah website utama pada node arjuna dengan akses ke arjuna.yyy.com dengan ali
   ```
 
 - Testing
-  Melakuakn ping `ping www.arjuna.e10.com -c 5` dan melakukan perintah berikut `host -t CNAME www.arjuna.e10.com`
+  Melakukan ping `ping www.arjuna.e10.com -c 5` dan melakukan perintah berikut `host -t CNAME www.arjuna.e10.com`
+  
   <img width="554" alt="Screenshot 2023-10-10 021910" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/946d2d1a-2d0f-4a6d-894a-368b2c8775f3">
   <img width="365" alt="Screenshot 2023-10-10 021931" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/daa6559e-a8c4-4103-bd7d-887bbbf057b8">
 
@@ -228,6 +229,7 @@ Dengan cara yang sama seperti soal nomor 2, buatlah website utama dengan akses k
 
 - Testing
   Melakukan ping `ping www.abimanyu.e10.com -c 5` dan menjalankan perintah berikut `host -t CNAME www.abimanyu.e10.com`
+  
   <img width="541" alt="Screenshot 2023-10-10 022001" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/ed931381-caa8-498c-be45-06c8c31175d4">
   <img width="397" alt="Screenshot 2023-10-10 022017" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/b31a7ea9-6bf2-45ad-8d41-5c4f17b0cfa1">
   
