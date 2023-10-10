@@ -604,7 +604,7 @@ Arjuna merupakan suatu Load Balancer Nginx dengan tiga worker (yang juga menggun
   Kami melakukan pengujian (`ping jarkom.site -c 5`) untuk domain yang telah dibuat, dari Server Nakula:
   <img width="497" alt="Screenshot 2023-10-10 144738" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/bdc0f945-11b9-4692-9ab2-d0fac8b78542">
 
-#### Konfigurasi pada Server Prabakusuma, Abimanyu, dan Wisanggeni (Worker)
+#### Konfigurasi pada Server Prabakusuma (Worker)
 - Melakukan penginstallan lalu setup Nginx dan PHP
   ```ruby
   apt-get update && apt install nginx php php-fpm -y
@@ -619,7 +619,7 @@ Arjuna merupakan suatu Load Balancer Nginx dengan tiga worker (yang juga menggun
   ```ruby
   echo '
   <?php
-   echo "Halo, Kamu berada di Abimanyu";
+   echo "Halo, Kamu berada di Prabukusuma";
   ?>
   ' > /var/www/jarkom/index.php
   ```
@@ -629,9 +629,9 @@ Arjuna merupakan suatu Load Balancer Nginx dengan tiga worker (yang juga menggun
   echo '
    server {
   
-   	listen 80;
+   	listen 8001;
   
-   	root /var/www/jarkom;
+   	root /var/www/jarkom/;
   
    	index index.php index.html index.htm;
    	server_name _;
@@ -671,9 +671,145 @@ Arjuna merupakan suatu Load Balancer Nginx dengan tiga worker (yang juga menggun
   ```ruby
   nginx -t
   ```
-  <img width="540" alt="Screenshot 2023-10-10 145131" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/d42ba27a-c906-4a93-ac27-1a91aeea97dd">
-  <img width="495" alt="Screenshot 2023-10-10 145713" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/1e1259a3-e62a-426c-8ce2-39581c3a631e">
   <img width="481" alt="Screenshot 2023-10-10 145726" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/0b149c0c-fe90-4d5e-8001-708a03749568">
+
+#### Konfigurasi pada Server Abimanyu (Worker)
+- Melakukan penginstallan lalu setup Nginx dan PHP
+  ```ruby
+  apt-get update && apt install nginx php php-fpm -y
+  ```
+
+- Membuat direktori baru
+  ```ruby
+  mkdir /var/www/jarkom
+  ```
+
+- Membuat file `index.php` di dalam folder `/jarkom` dan mengisikan konfigurasi berikut: 
+  ```ruby
+  echo '
+  <?php
+   echo "Halo, Kamu berada di Abimanyu";
+  ?>
+  ' > /var/www/jarkom/index.php
+  ```
+
+- Kemudian kami akan melakukan konfigurasi pada Nginx, pertama masuk ke direktori `/etc/nginx/sites-available` lalu buat file baru dengan nama `jarkom` dan mengisikan konfigurasi berikut:
+  ```ruby
+  echo '
+   server {
+  
+   	listen 8002;
+  
+   	root /var/www/jarkom/;
+  
+   	index index.php index.html index.htm;
+   	server_name _;
+  
+   	location / {
+   			try_files $uri $uri/ /index.php?$query_string;
+   	}
+  
+   	# pass PHP scripts to FastCGI server
+   	location ~ \.php$ {
+   	include snippets/fastcgi-php.conf;
+   	fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+   	}
+  
+   location ~ /\.ht {
+   			deny all;
+   	}
+  
+   	error_log /var/log/nginx/jarkom_error.log;
+   	access_log /var/log/nginx/jarkom_access.log;
+   }
+  ' > /etc/nginx/sites-available/jarkom
+  ```
+
+- Kemudian, kami membuat `symlink`
+  ```ruby
+  ln -s /etc/nginx/sites-available/jarkom /etc/nginx/sites-enabled
+  ```
+
+- Kemudian restart nginx dengan perintah
+  ```ruby
+  service nginx restart
+  ```
+
+- Testing
+  jika mengecek apakah konfigurasi yang dibuat sudah benar atau belum, bisa mengunakan perintah berikut
+  ```ruby
+  nginx -t
+  ```
+  <img width="495" alt="Screenshot 2023-10-10 145713" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/1e1259a3-e62a-426c-8ce2-39581c3a631e">
+
+#### Konfigurasi pada Server Wisanggeni (Worker)
+- Melakukan penginstallan lalu setup Nginx dan PHP
+  ```ruby
+  apt-get update && apt install nginx php php-fpm -y
+  ```
+
+- Membuat direktori baru
+  ```ruby
+  mkdir /var/www/jarkom
+  ```
+
+- Membuat file `index.php` di dalam folder `/jarkom` dan mengisikan konfigurasi berikut: 
+  ```ruby
+  echo '
+  <?php
+   echo "Halo, Kamu berada di Wisanggeni";
+  ?>
+  ' > /var/www/jarkom/index.php
+  ```
+
+- Kemudian kami akan melakukan konfigurasi pada Nginx, pertama masuk ke direktori `/etc/nginx/sites-available` lalu buat file baru dengan nama `jarkom` dan mengisikan konfigurasi berikut:
+  ```ruby
+  echo '
+   server {
+  
+   	listen 8003;
+  
+   	root /var/www/jarkom/;
+  
+   	index index.php index.html index.htm;
+   	server_name _;
+  
+   	location / {
+   			try_files $uri $uri/ /index.php?$query_string;
+   	}
+  
+   	# pass PHP scripts to FastCGI server
+   	location ~ \.php$ {
+   	include snippets/fastcgi-php.conf;
+   	fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+   	}
+  
+   location ~ /\.ht {
+   			deny all;
+   	}
+  
+   	error_log /var/log/nginx/jarkom_error.log;
+   	access_log /var/log/nginx/jarkom_access.log;
+   }
+  ' > /etc/nginx/sites-available/jarkom
+  ```
+
+- Kemudian, kami membuat `symlink`
+  ```ruby
+  ln -s /etc/nginx/sites-available/jarkom /etc/nginx/sites-enabled
+  ```
+
+- Kemudian restart nginx dengan perintah
+  ```ruby
+  service nginx restart
+  ```
+  
+- Testing
+  jika mengecek apakah konfigurasi yang dibuat sudah benar atau belum, bisa mengunakan perintah berikut
+  ```ruby
+  nginx -t
+  ```
+  <img width="540" alt="Screenshot 2023-10-10 145131" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/d42ba27a-c906-4a93-ac27-1a91aeea97dd">
 
 ## Soal Nomor 10
 Kemudian gunakan algoritma Round Robin untuk Load Balancer pada Arjuna. Gunakan server_name pada soal nomor 1. Untuk melakukan pengecekan akses alamat web tersebut kemudian pastikan worker yang digunakan untuk menangani permintaan akan berganti ganti secara acak. Untuk webserver di masing-masing worker wajib berjalan di port 8001-8003. Contoh
@@ -682,3 +818,64 @@ Kemudian gunakan algoritma Round Robin untuk Load Balancer pada Arjuna. Gunakan 
     - Wisanggeni:8003
 
 ### Jawaban Nomor 10
+#### Konfigurasi pada Server Arjuna
+- Konfigurasi pada file `/etc/nginx/sites-available/lb-jarkom` seperti dibawah:
+  ```ruby
+  echo '
+   # Default menggunakan Round Robin
+  upstream myweb {
+      server 192.168.3.2:8001;  	#IP Prabakusuma
+      server 192.168.3.3:8002;    #IP Abimanyu
+      server 192.168.3.4:8003;   	#IP Wisanggeni
+  }
+  
+  server {
+      listen 80;
+      server_name arjuna.e10.com www.arjuna.e10.com;
+  
+      location / {
+          proxy_pass http://myweb;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+      }
+  }
+  ' > /etc/nginx/sites-available/lb-jarkom
+  ```
+
+- Lalu, kami membuat symlink
+  ```ruby
+  ln -s /etc/nginx/sites-available/lb-jarkom /etc/nginx/sites-enabled
+  ```
+
+#### Konfigurasi pada Server Yudhistira
+- Ubah konfigurasi `/etc/bind/jarkom/arjuna.e10.com` agar mengarah ke Server Arjuna
+  ```ruby
+  ;
+  ; BIND data file for local loopback interface
+  ;
+  $TTL    604800  
+  @       IN      SOA     arjuna.e10.com. root.arjuna.e10.com. (
+                          2022100601      ; Serial
+                          604800          ; Refresh
+                          86400           ; Retry
+                          2419200         ; Expire
+                          604800 )        ; Negative Cache TTL
+  ;
+  @               IN      NS      arjuna.e10.com.
+  @               IN      A       192.211.3.5 ; IP Arjuna
+  www             IN      CNAME   arjuna.e10.com.
+```
+
+- Testing
+  Lakukan perintah `curl arjuna.e10.com` pada Server Nakula. Pada GNS3 saya ketika saya mengetik perintah tersebut yang muncul adalah sebagai berikut:
+  <img width="330" alt="Screenshot 2023-10-10 210001" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/5561e864-0e25-43b9-bc56-1f2a2dc59719">
+
+  Saya telah mencari pada google bahwa hal tersebut merupakan kesalahan dari php, sehingga saya menjalankan perintah `service php7.0-fpm start` dan `service php7.0-fpm restart` pada seluruh    Server Worker
+  <img width="561" alt="Screenshot 2023-10-10 210123" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/5d4100a5-51c0-4575-86de-0711cae337f7">
+  <img width="575" alt="Screenshot 2023-10-10 210030" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/7684410a-63b6-4a30-92ac-3bd7933711ea">
+  <img width="566" alt="Screenshot 2023-10-10 210100" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/0293d1b3-5a26-4c6e-9832-c645fd3fb015">
+
+  Sehingga, ketika saya menjalankan perintah `curl arjuna.e10.com` pada Server Nakula lagi hasilnya sebagai berikut:
+  <img width="256" alt="Screenshot 2023-10-10 210137" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/d1975b17-ecc5-4a19-960e-a067d7fadc51">
