@@ -35,8 +35,8 @@ Yudhistira akan digunakan sebagai DNS Master, Werkudara sebagai DNS Slave, Arjun
   iface eth3 inet static
   	address 192.211.3.1
   	netmask 255.255.255.0
- ```
-
+   ```
+  
 - Nakula
   ```ruby
   auto eth0
@@ -71,8 +71,8 @@ Yudhistira akan digunakan sebagai DNS Master, Werkudara sebagai DNS Slave, Arjun
   	address 192.211.2.3
   	netmask 255.255.255.0
   	gateway 192.211.2.1
- ```
-
+  ```
+  
 - Prabukusuma
   ```ruby
   auto eth0
@@ -89,8 +89,8 @@ Yudhistira akan digunakan sebagai DNS Master, Werkudara sebagai DNS Slave, Arjun
   	address 192.211.3.3
   	netmask 255.255.255.0
   	gateway 192.211.3.1
- ```
-
+   ```
+  
 - Wisanggeni
   ```ruby
   auto eth0
@@ -107,7 +107,7 @@ Yudhistira akan digunakan sebagai DNS Master, Werkudara sebagai DNS Slave, Arjun
   	address 192.211.3.5
   	netmask 255.255.255.0
   	gateway 192.211.3.1
- ```
+   ```
 
 #### Initial Script
 Pada initial project, kami mengubah `root/.bashrc` masing-masing node sehingga saat dijalankan akan langsung melakukan command berikut ini
