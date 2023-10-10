@@ -866,8 +866,8 @@ Kemudian gunakan algoritma Round Robin untuk Load Balancer pada Arjuna. Gunakan 
   @               IN      NS      arjuna.e10.com.
   @               IN      A       192.211.3.5 ; IP Arjuna
   www             IN      CNAME   arjuna.e10.com.
-```
-
+  ```
+  
 - Testing
   Lakukan perintah `curl arjuna.e10.com` pada Server Nakula. Pada GNS3 saya ketika saya mengetik perintah tersebut yang muncul adalah sebagai berikut:
   <img width="330" alt="Screenshot 2023-10-10 210001" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/5561e864-0e25-43b9-bc56-1f2a2dc59719">
