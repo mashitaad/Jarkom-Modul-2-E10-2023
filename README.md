@@ -869,13 +869,16 @@ Kemudian gunakan algoritma Round Robin untuk Load Balancer pada Arjuna. Gunakan 
   ```
   
 - Testing
-  Lakukan perintah `curl arjuna.e10.com` pada Server Nakula. Pada GNS3 saya ketika saya mengetik perintah tersebut yang muncul adalah sebagai berikut:
+  - Lakukan perintah `curl arjuna.e10.com` pada Server Nakula. Pada GNS3 saya ketika saya mengetik perintah tersebut yang muncul adalah sebagai berikut:
+  
   <img width="330" alt="Screenshot 2023-10-10 210001" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/5561e864-0e25-43b9-bc56-1f2a2dc59719">
 
-  Saya telah mencari pada google bahwa hal tersebut merupakan kesalahan dari php, sehingga saya menjalankan perintah `service php7.0-fpm start` dan `service php7.0-fpm restart` pada seluruh    Server Worker
+  - Saya telah mencari pada google bahwa hal tersebut merupakan kesalahan dari php, sehingga saya menjalankan perintah `service php7.0-fpm start` dan `service php7.0-fpm restart` pada          seluruh Server Worker
+    
   <img width="561" alt="Screenshot 2023-10-10 210123" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/5d4100a5-51c0-4575-86de-0711cae337f7">
   <img width="575" alt="Screenshot 2023-10-10 210030" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/7684410a-63b6-4a30-92ac-3bd7933711ea">
   <img width="566" alt="Screenshot 2023-10-10 210100" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/0293d1b3-5a26-4c6e-9832-c645fd3fb015">
 
-  Sehingga, ketika saya menjalankan perintah `curl arjuna.e10.com` pada Server Nakula lagi hasilnya sebagai berikut:
+  - Sehingga, ketika saya menjalankan perintah `curl arjuna.e10.com` pada Server Nakula lagi hasilnya sebagai berikut:
+  
   <img width="256" alt="Screenshot 2023-10-10 210137" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/d1975b17-ecc5-4a19-960e-a067d7fadc51">
