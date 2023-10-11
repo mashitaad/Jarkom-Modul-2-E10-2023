@@ -182,9 +182,7 @@ Buatlah website utama pada node arjuna dengan akses ke arjuna.yyy.com dengan ali
 
 - Testing
   Melakukan ping `ping www.arjuna.e10.com -c 5` dan melakukan perintah berikut `host -t CNAME www.arjuna.e10.com`
-  
-  <img width="554" alt="Screenshot 2023-10-10 021910" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/946d2d1a-2d0f-4a6d-894a-368b2c8775f3">
-  <img width="365" alt="Screenshot 2023-10-10 021931" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/daa6559e-a8c4-4103-bd7d-887bbbf057b8">
+  <img width="540" alt="Screenshot 2023-10-11 124208" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/0794a8a2-8245-4375-95ef-552f84f8f4f9">
 
 NOTE: SEMUA KONFIGURASI SAYA LETAKKAN DI .BASHRC 
 
@@ -229,9 +227,7 @@ Dengan cara yang sama seperti soal nomor 2, buatlah website utama dengan akses k
 
 - Testing
   Melakukan ping `ping www.abimanyu.e10.com -c 5` dan menjalankan perintah berikut `host -t CNAME www.abimanyu.e10.com`
-  
-  <img width="541" alt="Screenshot 2023-10-10 022001" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/ed931381-caa8-498c-be45-06c8c31175d4">
-  <img width="397" alt="Screenshot 2023-10-10 022017" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/b31a7ea9-6bf2-45ad-8d41-5c4f17b0cfa1">
+  <img width="539" alt="Screenshot 2023-10-11 124531" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/7b060a8a-e504-414a-b5d1-3a95377b8f3c">
   
 ## Soal Nomor 4
 Kemudian, karena terdapat beberapa web yang harus di-deploy, buatlah subdomain parikesit.abimanyu.yyy.com yang diatur DNS-nya di Yudhistira dan mengarah ke Abimanyu.
@@ -261,7 +257,7 @@ Kemudian, karena terdapat beberapa web yang harus di-deploy, buatlah subdomain p
 
 - Testing
   `ping parikesit.abimanyu.e10.com`
-  <img width="508" alt="Screenshot 2023-10-10 022056" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/fd47689a-f8b5-434f-a3c1-8d45121aca30">
+  <img width="488" alt="Screenshot 2023-10-11 124636" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/7c72446f-1da6-43dd-8fc6-177df992458a">
 
 ## Soal Nomor 5
 Buat juga reverse domain untuk domain utama. (Abimanyu saja yang direverse)
