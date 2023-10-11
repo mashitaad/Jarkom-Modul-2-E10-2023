@@ -182,6 +182,7 @@ Buatlah website utama pada node arjuna dengan akses ke arjuna.yyy.com dengan ali
 
 - Testing
   Melakukan ping `ping www.arjuna.e10.com -c 5` dan melakukan perintah berikut `host -t CNAME www.arjuna.e10.com`
+
   <img width="540" alt="Screenshot 2023-10-11 124208" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/0794a8a2-8245-4375-95ef-552f84f8f4f9">
 
 NOTE: SEMUA KONFIGURASI SAYA LETAKKAN DI .BASHRC 
@@ -227,6 +228,7 @@ Dengan cara yang sama seperti soal nomor 2, buatlah website utama dengan akses k
 
 - Testing
   Melakukan ping `ping www.abimanyu.e10.com -c 5` dan menjalankan perintah berikut `host -t CNAME www.abimanyu.e10.com`
+
   <img width="539" alt="Screenshot 2023-10-11 124531" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/7b060a8a-e504-414a-b5d1-3a95377b8f3c">
   
 ## Soal Nomor 4
@@ -257,6 +259,7 @@ Kemudian, karena terdapat beberapa web yang harus di-deploy, buatlah subdomain p
 
 - Testing
   `ping parikesit.abimanyu.e10.com`
+
   <img width="488" alt="Screenshot 2023-10-11 124636" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/7c72446f-1da6-43dd-8fc6-177df992458a">
 
 ## Soal Nomor 5
