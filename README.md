@@ -401,10 +401,10 @@ Seperti yang kita tahu karena banyak sekali informasi yang harus diterima, buatl
   @               IN      NS      abimanyu.e10.com.
   @               IN      A       192.211.2.2			; IP Yudhistira
   www             IN      CNAME   abimanyu.e10.com.
-  baratayuda	IN 	A	192.211.3.3			; IP Abimanyu	
+  baratayuda	    IN 	    A	      192.211.3.3			; IP Abimanyu	
   www.baratayuda  IN      CNAME   baratayuda.abimanyu.e10.com. 
-  ns1	IN 	A	A	192.211.2.3			; IP Werkudara
-  operation	IN 	NS 	ns1
+  ns1	            IN 	    A	      192.211.2.3			; IP Werkudara
+  @		            IN	    AAAA	  ::1
   ' > /etc/bind/jarkom/abimanyu.e10.com
   ```
 
