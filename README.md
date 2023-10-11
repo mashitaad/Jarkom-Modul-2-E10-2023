@@ -1,4 +1,4 @@
-# Jarkom-Modul-2-E10-2023 test
+# Jarkom-Modul-2-E10-2023
 
 ## Identitas Kelompok E10 (Jaringan Komputer E)
 | Name                 | NRP        |
