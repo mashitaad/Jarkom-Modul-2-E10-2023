@@ -332,7 +332,7 @@ Agar dapat tetap dihubungi ketika DNS Server Yudhistira bermasalah, buat juga We
   ' > /etc/bind/named.conf.local
   ```
 
-- - Kemudian restart bind9 dengan perintah
+- Kemudian restart bind9 dengan perintah
   ```ruby
   service bind9 restart
   ```
@@ -538,73 +538,37 @@ Arjuna merupakan suatu Load Balancer Nginx dengan tiga worker (yang juga menggun
   apt-get install bind9 nginx
   ```
 
-- Pada topologi kali ini kami akan menggunakan jarkom.site sebagai domain utama seperti di Modul Web Server.
-- Mengisi konfigurasi pada `named.conf.local`
+#### Konfigurasi pada Server Arjuna
+- Konfigurasi pada file `/etc/nginx/sites-available/lb-jarkom` seperti dibawah:
   ```ruby
   echo '
-   //
-   // Do any local configuration here
-   //
+   # Default menggunakan Round Robin
+  upstream myweb {
+      server 192.168.3.2;  	#IP Prabakusuma
+      server 192.168.3.3;    #IP Abimanyu
+      server 192.168.3.4;   	#IP Wisanggeni
+  }
   
-   // Consider adding the 1918 zones here, if they are not used in your
-   // organization
-   //include "/etc/bind/zones.rfc1918";
+  server {
+      listen 80;
+      server_name arjuna.e10.com www.arjuna.e10.com;
   
-  
-   zone "jarkom.site" {
-   		type master;
-   		file "/etc/bind/jarkom/jarkom.site";
-   };
-  
-  zone "2.211.192.in-addr.arpa" {
-      type master;
-      file "/etc/bind/jarkom/2.211.192.in-addr.arpa";
-  };
-  ' > /etc/bind/named.conf.local
+      location / {
+          proxy_pass http://myweb;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+      }
+  }
+  ' > /etc/nginx/sites-available/lb-jarkom
   ```
 
-- Mengisi konfigurasi file `jarkom.site`
+- Lalu, kami membuat symlink
   ```ruby
-  echo '
-  ;
-  ; BIND data file for local loopback interface
-  ;
-  $TTL    604800
-  @       IN      SOA     jarkom.site. root.jarkom.site. (
-   			2         ; Serial
-   			604800    ; Refresh
-   			86400     ; Retry
-   			2419200   ; Expire
-   			604800 )  ; Negative Cache TTL
-  ;
-  @       IN      NS      jarkom.site.
-  @       IN      A       192.211.3.5
-  ' > jarkom.site
+  ln -s /etc/nginx/sites-available/lb-jarkom /etc/nginx/sites-enabled
   ```
-
-- Mengisi konfigurasi `/etc/bind/jarkom/2.211.192.in-addr.arpa`
-  ```ruby
-  echo '
-   ;
-   ; BIND data file for local loopback interface
-   ;
-   $TTL    604800
-   @       IN      SOA     jarkom.site. root.jarkom.site. (
-   				2         ; Serial
-   				604800    ; Refresh
-   				86400     ; Retry
-   				2419200   ; Expire
-   				604800 )  ; Negative Cache TTL
-   ;
-   2.211.192.in-addr.arpa.         IN      NS      jarkom.site.
-   2                               IN      PTR     jarkom.site.
-  ' > /etc/bind/jarkom/2.211.192.in-addr.arpa
-  ```
-
-- Testing
-  Kami melakukan pengujian (`ping jarkom.site -c 5`) untuk domain yang telah dibuat, dari Server Nakula:
-  <img width="497" alt="Screenshot 2023-10-10 144738" src="https://github.com/mashitaad/Jarkom-Modul-1-E10-2023/assets/87978863/bdc0f945-11b9-4692-9ab2-d0fac8b78542">
-
+  
 #### Konfigurasi pada Server Prabakusuma (Worker)
 - Melakukan penginstallan lalu setup Nginx dan PHP
   ```ruby
