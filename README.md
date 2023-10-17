@@ -183,7 +183,7 @@ Buatlah website utama pada node arjuna dengan akses ke arjuna.yyy.com dengan ali
 - Testing
   Melakukan ping `ping www.arjuna.e10.com -c 5` dan melakukan perintah berikut `host -t CNAME www.arjuna.e10.com`
 
-  <img width="540" alt="Screenshot 2023-10-11 124208" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/0794a8a2-8245-4375-95ef-552f84f8f4f9">
+  <img width="481" alt="Screenshot 2023-10-17 154329" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/998f2dc9-9e90-4f50-8138-97b00d1402ac">
 
 NOTE: SEMUA KONFIGURASI SAYA LETAKKAN DI .BASHRC 
 
@@ -229,7 +229,7 @@ Dengan cara yang sama seperti soal nomor 2, buatlah website utama dengan akses k
 - Testing
   Melakukan ping `ping www.abimanyu.e10.com -c 5` dan menjalankan perintah berikut `host -t CNAME www.abimanyu.e10.com`
 
-  <img width="539" alt="Screenshot 2023-10-11 124531" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/7b060a8a-e504-414a-b5d1-3a95377b8f3c">
+  <img width="442" alt="Screenshot 2023-10-17 154446" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/11c6fad8-aa05-4aa8-85fb-6e7e038a6d0e">
   
 ## Soal Nomor 4
 Kemudian, karena terdapat beberapa web yang harus di-deploy, buatlah subdomain parikesit.abimanyu.yyy.com yang diatur DNS-nya di Yudhistira dan mengarah ke Abimanyu.
@@ -260,7 +260,7 @@ Kemudian, karena terdapat beberapa web yang harus di-deploy, buatlah subdomain p
 - Testing
   `ping parikesit.abimanyu.e10.com`
 
-  <img width="488" alt="Screenshot 2023-10-11 124636" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/7c72446f-1da6-43dd-8fc6-177df992458a">
+  <img width="487" alt="Screenshot 2023-10-17 154609" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/7f4d58da-2b46-4690-acf4-ebe28a4af999">
 
 ## Soal Nomor 5
 Buat juga reverse domain untuk domain utama. (Abimanyu saja yang direverse)
@@ -511,7 +511,7 @@ Untuk informasi yang lebih spesifik mengenai Ranjapan Baratayuda, buatlah subdom
                            604800 )       ; Negative Cache TTL
   ;
   @               IN      NS		baratayuda.abimanyu.e10.com.
-  @               IN      A		192.211.3.3			; IP Abimanyu
+  @               IN      A		192.211.2.3			; IP Werkudara
   www             IN      CNAME		baratayuda.abimanyu.e10.com.
   rjp		IN	A		192.211.3.3			; IP Abimanyu
   www.rjp		IN	CNAME		rjp.baratayuda.abimanyu.e10.com.
@@ -582,11 +582,20 @@ Arjuna merupakan suatu Load Balancer Nginx dengan tiga worker (yang juga menggun
 
 - Membuat file `index.php` di dalam folder `/jarkom` dan mengisikan konfigurasi berikut: 
   ```ruby
-  echo '
   <?php
-   echo "Halo, Kamu berada di Prabukusuma";
+  $hostname = gethostname();
+  $date = date('Y-m-d H:i:s');
+  $php_version = phpversion();
+  $username = get_current_user();
+  
+  
+  
+  echo "Hello World!<br>";
+  echo "Saya adalah: $username<br>";
+  echo "Saat ini berada di: $hostname<br>";
+  echo "Versi PHP yang saya gunakan: $php_version<br>";
+  echo "Tanggal saat ini: $date<br>";
   ?>
-  ' > /var/www/jarkom/index.php
   ```
 
 - Kemudian kami akan melakukan konfigurasi pada Nginx, pertama masuk ke direktori `/etc/nginx/sites-available` lalu buat file baru dengan nama `jarkom` dan mengisikan konfigurasi berikut:
@@ -649,13 +658,22 @@ Arjuna merupakan suatu Load Balancer Nginx dengan tiga worker (yang juga menggun
   mkdir /var/www/jarkom
   ```
 
-- Membuat file `index.php` di dalam folder `/jarkom` dan mengisikan konfigurasi berikut: 
+- Membuat file `index.php` di dalam folder `/jarkom` (/var/www/jarkom/index.php) dan mengisikan konfigurasi berikut: 
   ```ruby
-  echo '
   <?php
-   echo "Halo, Kamu berada di Abimanyu";
+  $hostname = gethostname();
+  $date = date('Y-m-d H:i:s');
+  $php_version = phpversion();
+  $username = get_current_user();
+  
+  
+  
+  echo "Hello World!<br>";
+  echo "Saya adalah: $username<br>";
+  echo "Saat ini berada di: $hostname<br>";
+  echo "Versi PHP yang saya gunakan: $php_version<br>";
+  echo "Tanggal saat ini: $date<br>";
   ?>
-  ' > /var/www/jarkom/index.php
   ```
 
 - Kemudian kami akan melakukan konfigurasi pada Nginx, pertama masuk ke direktori `/etc/nginx/sites-available` lalu buat file baru dengan nama `jarkom` dan mengisikan konfigurasi berikut:
@@ -720,11 +738,20 @@ Arjuna merupakan suatu Load Balancer Nginx dengan tiga worker (yang juga menggun
 
 - Membuat file `index.php` di dalam folder `/jarkom` dan mengisikan konfigurasi berikut: 
   ```ruby
-  echo '
   <?php
-   echo "Halo, Kamu berada di Wisanggeni";
+  $hostname = gethostname();
+  $date = date('Y-m-d H:i:s');
+  $php_version = phpversion();
+  $username = get_current_user();
+  
+  
+  
+  echo "Hello World!<br>";
+  echo "Saya adalah: $username<br>";
+  echo "Saat ini berada di: $hostname<br>";
+  echo "Versi PHP yang saya gunakan: $php_version<br>";
+  echo "Tanggal saat ini: $date<br>";
   ?>
-  ' > /var/www/jarkom/index.php
   ```
 
 - Kemudian kami akan melakukan konfigurasi pada Nginx, pertama masuk ke direktori `/etc/nginx/sites-available` lalu buat file baru dengan nama `jarkom` dan mengisikan konfigurasi berikut:
@@ -839,11 +866,7 @@ Kemudian gunakan algoritma Round Robin untuk Load Balancer pada Arjuna. Gunakan 
     <img width="330" alt="Screenshot 2023-10-10 210001" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/5561e864-0e25-43b9-bc56-1f2a2dc59719">
 
   - Saya telah mencari pada google bahwa hal tersebut merupakan kesalahan dari php, sehingga saya menjalankan perintah `service php7.0-fpm start` dan `service php7.0-fpm restart` pada          seluruh Server Worker
-    
-    <img width="561" alt="Screenshot 2023-10-10 210123" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/5d4100a5-51c0-4575-86de-0711cae337f7">
-    <img width="575" alt="Screenshot 2023-10-10 210030" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/7684410a-63b6-4a30-92ac-3bd7933711ea">
-    <img width="566" alt="Screenshot 2023-10-10 210100" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/0293d1b3-5a26-4c6e-9832-c645fd3fb015">
 
   - Sehingga, ketika saya menjalankan perintah `curl arjuna.e10.com` pada Server Nakula lagi hasilnya sebagai berikut:
   
-    <img width="256" alt="Screenshot 2023-10-10 210137" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/d1975b17-ecc5-4a19-960e-a067d7fadc51">
+    <img width="877" alt="Screenshot 2023-10-17 173941" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/86227723-0a18-441f-8f22-aebacd5b3414">
