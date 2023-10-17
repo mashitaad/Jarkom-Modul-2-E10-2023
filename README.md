@@ -170,7 +170,7 @@ Buatlah website utama pada node arjuna dengan akses ke arjuna.yyy.com dengan ali
                           604800 )        ; Negative Cache TTL
   ;
   @               IN      NS      arjuna.e10.com.
-  @               IN      A       192.211.2.2 ; IP Yudhistira
+  @               IN      A       192.211.3.5 ; IP Arjuna
   www             IN      CNAME   arjuna.e10.com.
   ' > /etc/bind/jarkom/arjuna.e10.com
   ```
@@ -216,7 +216,7 @@ Dengan cara yang sama seperti soal nomor 2, buatlah website utama dengan akses k
                           604800 )        ; Negative Cache TTL
   ;
   @               IN      NS      abimanyu.e10.com.
-  @               IN      A       192.211.2.2 ; IP Yudhistira
+  @               IN      A       192.211.3.4 ; IP Abimanyu
   www             IN      CNAME   abimanyu.e10.com.
   ' > /etc/bind/jarkom/abimanyu.e10.com
   ```
