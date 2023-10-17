@@ -136,7 +136,7 @@ Pada initial project, kami mengubah `root/.bashrc` masing-masing node sehingga s
 Buatlah website utama pada node arjuna dengan akses ke arjuna.yyy.com dengan alias www.arjuna.yyy.com dengan yyy merupakan kode kelompok.
 
 ### Jawaban Nomor 2
-- Melakukan perintah `nano .bashrc` dan mengisikan konfigurasi arjuna.e10.com seperti berikut:
+- Membuat konfigurasi arjuna.e10.com seperti berikut:
   ```ruby
   echo '
   zone "arjuna.e10.com" {
@@ -185,13 +185,11 @@ Buatlah website utama pada node arjuna dengan akses ke arjuna.yyy.com dengan ali
 
   <img width="481" alt="Screenshot 2023-10-17 154329" src="https://github.com/mashitaad/Jarkom-Modul-2-E10-2023/assets/87978863/998f2dc9-9e90-4f50-8138-97b00d1402ac">
 
-NOTE: SEMUA KONFIGURASI SAYA LETAKKAN DI .BASHRC 
-
 ## Soal Nomor 3
 Dengan cara yang sama seperti soal nomor 2, buatlah website utama dengan akses ke abimanyu.yyy.com dan alias www.abimanyu.yyy.com.
 
 ### Jawaban Nomor 3
-- Melakukan perintah `nano .bashrc` dan mengisikan konfigurasi abimanyu.e10.com seperti berikut:
+- Membuat konfigurasi abimanyu.e10.com seperti berikut:
   ```ruby
   echo '
   zone "abimanyu.e10.com" {
@@ -201,7 +199,7 @@ Dengan cara yang sama seperti soal nomor 2, buatlah website utama dengan akses k
   ' > /etc/bind/named.conf.local
   ```
 
-- Masih di dalam file .bashrc, tambahkan konfigurasi ini:
+- Tambahkan konfigurasi ini:
   ```ruby
   echo '
   ;
@@ -235,7 +233,7 @@ Dengan cara yang sama seperti soal nomor 2, buatlah website utama dengan akses k
 Kemudian, karena terdapat beberapa web yang harus di-deploy, buatlah subdomain parikesit.abimanyu.yyy.com yang diatur DNS-nya di Yudhistira dan mengarah ke Abimanyu.
 
 ### Jawaban Nomor 4
-- Melakukan perintah `nano .bashrc` dan mengisikan konfigurasi abimanyu.e10.com seperti berikut:
+- Buat konfigurasi abimanyu.e10.com seperti berikut:
   ```ruby
   echo '
   ;
@@ -306,7 +304,7 @@ Buat juga reverse domain untuk domain utama. (Abimanyu saja yang direverse)
   ```
 
 - Testing
-  Saya melakukan testing di Sadewa dengan memasukkan konfigurasi berikut ke `.bashrc`-nya
+  Saya melakukan testing di Sadewa dengan memasukkan konfigurasi ke Sadewa:
   ```ruby
   apt-get update
   apt-get install dnsutils
